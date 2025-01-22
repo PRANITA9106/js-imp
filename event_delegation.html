@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive List</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive List</h1>
+    <ul id="item-list">
+        <li>item-1</li>
+        <li>item-2</li>
+    </ul>
+    <button id="add-item-btn">Add Item</button>
+
+    <script>
+        
+        const itemList = document.getElementById('item-list');
+        const addItemBtn = document.getElementById('add-item-btn');
+        
+        //Adding new items
+        addItemBtn.addEventListener('click', () => {
+            const newItem = document.createElement('li');
+            newItem.textContent = `Item ${itemList.children.length + 1}`;
+            itemList.appendChild(newItem);
+        });
+
+        // Event delegation
+        itemList.addEventListener('click', (event) => {
+            if (event.target.tagName === 'LI') {
+                const clickedItem = event.target;
+                
+                console.log(clickedItem.textContent);
+                
+                clickedItem.classList.toggle('highlight');
+            }
+        });
+    </script>
+</body>
+</html>
