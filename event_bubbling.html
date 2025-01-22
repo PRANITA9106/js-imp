@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling Example</title>
+</head>
+<body>
+    <div id="outer">
+        <section id="middle">
+            <button id="inner">Click me</button>
+        </section>
+    </div>
+
+    <script>
+       
+        document.getElementById('outer').addEventListener('click', function(event) {
+            console.log('Outer div clicked');
+            console.log('Event Phase:', event.eventPhase); // Optional: Log event phase
+        });
+
+       
+        document.getElementById('middle').addEventListener('click', function(event) {
+            console.log('Middle section clicked');
+            console.log('Event Phase:', event.eventPhase); // Optional: Log event phase
+        });
+
+        
+        document.getElementById('inner').addEventListener('click', function(event) {
+            console.log('Inner button clicked');
+            console.log('Event Phase:', event.eventPhase); // Optional: Log event phase
+           
+            // event.stopPropagation();
+        });
+    </script>
+</body>
+</html>
